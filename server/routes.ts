@@ -13,6 +13,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const categories = await storage.getCategories();
       res.json(categories);
     } catch (error) {
+      console.error("Error fetching categories:", error);
       res.status(500).json({ message: "Failed to fetch categories" });
     }
   });
@@ -23,6 +24,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const featuredArticles = await storage.getFeaturedArticles();
       res.json(featuredArticles);
     } catch (error) {
+      console.error("Error fetching featured articles:", error);
       res.status(500).json({ message: "Failed to fetch featured articles" });
     }
   });
@@ -50,6 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
+      console.error("Error fetching articles:", error);
       res.status(500).json({ message: "Failed to fetch articles" });
     }
   });
